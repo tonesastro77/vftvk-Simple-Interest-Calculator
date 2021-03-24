@@ -6,7 +6,7 @@ function compute()
     var year = document.getElementById("years").value;
     var total = amount*rate*0.01*year;
     var result = document.getElementById("result");
-    if(amount < 0){
+    if(amount <= 0){
         alert("Please enter a positive number");
         getfocus("principal");
     }
