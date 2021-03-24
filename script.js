@@ -4,28 +4,34 @@ function compute()
     var rate = document.getElementById("rate").value;
     var today = new Date().getFullYear()
     var year = document.getElementById("years").value;
-    var total = amount*rate*0.001*year;
+    var total = amount*rate*0.01*year;
     var result = document.getElementById("result");
-    if(amount === '' || amount.length == 0 || isNaN(amount)){
+    if(amount < 0){
+        alert("Please enter a positive number");
+        getfocus("principal");
+    }
+    else if(amount === '' || amount.length == 0 || isNaN(amount)){
         result.className = "error"
-        result.innerHTML = "Assign a number value for the amount and it should not be zero.";
-        
+        result.innerHTML = "Assign a number value for the amount and it should not be zero.";  
     }
     else{
         result.className = "normal"
         var newText = document.createTextNode(
             "<br>If you deposit <mark>" + amount + "</mark>, <br>" + 
-            "at an interest rate of <mark>" + rate/10 + "%</mark>.<br>" + 
+            "at an interest rate of <mark>" + rate + "%</mark>.<br>" + 
             "You will receive an amount of <mark>" + total + "</mark>,<br>" +
             "in the year <mark>" + (today+parseInt(year) + "</mark>")
         );
         result.innerHTML = newText.textContent;
     }
-    
 }
 
 function displayChange(){
     var display = document.getElementById("rateN");
     var rate = document.getElementById("rate").value;
-    display.innerHTML = rate/10 + "%";
+    display.innerHTML = rate + "%";
 }
+
+function getfocus(string) {
+    document.getElementById(string).focus();
+  }
