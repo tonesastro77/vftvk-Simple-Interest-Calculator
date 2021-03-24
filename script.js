@@ -12,7 +12,9 @@ function compute()
     }
     else if(amount === '' || amount.length == 0 || isNaN(amount)){
         result.className = "error"
-        result.innerHTML = "Assign a number value for the amount and it should not be zero.";  
+        result.innerHTML = "Assign a number value for the amount and it should not be zero.";
+        alert("Please enter a positive number");
+        getfocus("principal");
     }
     else{
         result.className = "normal"
